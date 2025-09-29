@@ -9,6 +9,6 @@ program pepitaGame {
 	//search assets in assets folder, for example, for the background
 	//Valor por defecto game.ground("ground.png")
 	
-	//game.addVisual(pepita)
+	game.addVisual(pepita)
 	game.start()	
 }
