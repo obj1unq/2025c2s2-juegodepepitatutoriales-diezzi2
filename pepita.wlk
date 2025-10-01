@@ -27,6 +27,7 @@ object pepita {
 	method estadoActual() {
 		return if (self.atrapadaPorSilvestre() or self.estaAgotada()) {
 			failState.nombre()
+			game.stop()
 		}
 		else if (self.llegoAlObjetivo()) {
 			winState.nombre()
@@ -43,7 +44,7 @@ object pepita {
 	}
 
 	method estaAgotada() {
-		return energia == 0
+		return energia < 9
 	}
 
 	method image() {
@@ -59,22 +60,22 @@ object pepita {
 	// vuelo con gasto de energía
 
 	method volarIzquierda() {
-		self.volar(1)
-		self.moverIzquierda()
+			energia -= 9
+			self.moverIzquierda()
 	}
 
 	method volarDerecha() {
-		self.volar(1)
+		energia -= 9
 	 	self.moverDerecha()
 	}
 	
 	method volarArriba() {
-		self.volar(1)
+		energia -= 9
 	  	self.moverArriba()
 	}
 	
 	method volarAbajo() {
-		self.volar(1)
+		energia -= 9
 	  	self.moverAbajo()
 	}
 
