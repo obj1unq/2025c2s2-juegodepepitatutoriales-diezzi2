@@ -11,7 +11,11 @@ program pepitaGame {
 	
 	game.addVisual(silvestre)
 	game.addVisual(nido)
-	game.addVisualCharacter(pepita)
+	game.addVisual(pepita)
+	keyboard.left().onPressDo({pepita.volarIzquierda()})
+	keyboard.right().onPressDo({pepita.volarDerecha()})
+	keyboard.up().onPressDo({pepita.volarArriba()})
+	keyboard.down().onPressDo({pepita.volarAbajo()})
 	game.start()
 	game.onTick(800, "gravedad", {pepita.caer()})
 }

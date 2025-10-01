@@ -8,6 +8,8 @@ object pepita {
 	var predador          = silvestre
 	var objetivo          = nido
 
+	// métodos dados
+
 	method comer(comida) {
 		energia = energia + comida.energiaQueOtorga()
 	}
@@ -19,6 +21,8 @@ object pepita {
 	method energia() {
 		return energia
 	}
+
+	// estados
 
 	method estadoActual() {
 		return if (self.atrapadaPorSilvestre() or self.estaAgotada()) {
@@ -46,10 +50,51 @@ object pepita {
 		return "pepita" + self.estadoActual() + ".png"
 	}
 
+	// gravedad
+
 	method caer() {
-		position = game.at(position.x(), 0.max(position.y() - 1))
+		self.moverAbajo()
 	}
 
+	// vuelo con gasto de energía
+
+	method volarIzquierda() {
+		self.volar(1)
+		self.moverIzquierda()
+	}
+
+	method volarDerecha() {
+		self.volar(1)
+	 	self.moverDerecha()
+	}
+	
+	method volarArriba() {
+		self.volar(1)
+	  	self.moverArriba()
+	}
+	
+	method volarAbajo() {
+		self.volar(1)
+	  	self.moverAbajo()
+	}
+
+	// movimiento genérico
+
+	method moverIzquierda() {
+		position = game.at(0.max(position.x() - 1), position.y())
+	}
+
+	method moverDerecha() {
+	 	position = game.at((game.width() - 1).min(position.x() + 1), position.y())
+	}
+	
+	method moverArriba() {
+	  	position = game.at(position.x(), (game.height() - 1).min(position.y() + 1))
+	}
+	
+	method moverAbajo() {
+	  	position = game.at(position.x(), 0.max(position.y() - 1))
+	}
 }
 
 // ESTADOS DE PEPITA
